@@ -1,4 +1,11 @@
-<button (click)="loginGoogle()" >
+<button (click)="loginGoogle()" *ngIf="!user" >
   login
 </button>
+<button 
+*ngIf="user"
+(click)="logout()"
+>
+logout
+</button>
+
 

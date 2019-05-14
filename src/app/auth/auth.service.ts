@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 //import angularFireAuth
-
-
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase';
 
@@ -11,12 +9,26 @@ import { auth } from 'firebase';
 })
 
 export class AuthService {
+  
 
   constructor(private angularFireAuth: AngularFireAuth) { }
 
-//login using OAuth; 
+/** login using OAuth; **/
   login(){
     console.log('user logged in from auth.service.ts with privated oauth')
     this.angularFireAuth.auth.signInWithRedirect(new auth.GoogleAuthProvider);
   }
+/** Getting user info via login **/
+  getUserInfo(){
+      return this.angularFireAuth.authState
+  }
+
+ /** logout **/
+   logout(){
+     this.angularFireAuth.auth.signOut();
+   }
+
+
+
+
 }
